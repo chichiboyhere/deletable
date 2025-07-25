@@ -45,7 +45,9 @@ function CommentForm({ postId }: { postId: string }) {
 
   return (
     <div className="mt-10 border-t pt-6">
-      <h3 className="text-lg font-semibold mb-4">Leave a Comment</h3>
+      <h3 className="text-lg font-semibold mb-4 text-blue-900 dark:text-white">
+        Leave a Comment
+      </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"

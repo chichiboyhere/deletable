@@ -78,7 +78,7 @@ export default async function BlogDetailPage({
   return (
     <>
       <JsonLd data={jsonLd} />
-      <div className="dark:bg-gray-800">
+      <div className="dark:bg-gray-800 ">
         <div className="max-w-3xl mx-auto py-10 px-4 space-y-6 dark:text-[#ffffffcf] bg-white dark:bg-gray-800">
           <h1 className="text-3xl font-bold mt-15 text-blue-900 dark:text-white">
             {post.title}
@@ -99,10 +99,12 @@ export default async function BlogDetailPage({
             </div>
           )}
 
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <div className="text-black dark:text-white">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
 
           <div className="mt-10">
-            <h2 className="text-xl font-semibold mb-4 dark:text-white">
+            <h2 className="text-xl font-semibold mb-4 dark:text-white text-blue-900">
               Comments
             </h2>
 
@@ -112,17 +114,17 @@ export default async function BlogDetailPage({
                   key={index}
                   className="mb-4 p-4 border border-gray-300  rounded"
                 >
-                  <p className="text-sm text-gray-600 dark:text-[#ffffffcf]">
+                  <p className="text-sm text-gray-600 dark:text-[#ffffffcf] font-semibold">
                     {comment.name} —{" "}
                     {new Date(comment.postedAt).toLocaleString()}
                   </p>
-                  <p className="mt-1 dark:text-[#ffffffcf]">
+                  <p className="mt-1 dark:text-[#ffffffcf] text-black">
                     {comment.comment}
                   </p>
                 </div>
               ))
             ) : (
-              <p className="text-gray-500 dark:text-[#ffffffcf]">
+              <p className="text-black dark:text-[#ffffffcf]">
                 No comments yet.
               </p>
             )}
