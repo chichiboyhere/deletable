@@ -54,7 +54,7 @@ const CarRentalFields = () => {
           ))}
         </select>
       </div>
-      <h2 className="font-semibold mt-4">
+      <h2 className="font-semibold mt-4 text-blue-800">
         Select Duration(If within same day specify, in hours, inside text area
         below)
       </h2>

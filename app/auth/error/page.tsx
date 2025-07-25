@@ -2,16 +2,22 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function AuthErrorPage() {
+function ErrorMessage() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
 
+  return <p>{error ? `Error: ${error}` : "Something went wrong"}</p>;
+}
+
+export default function AuthErrorPage() {
   return (
     <div className="max-w-md mx-auto mt-10 text-center">
       <h1 className="text-2xl font-bold mb-2">Authentication Error</h1>
-      <p className="text-red-500">Error: {error}</p>
-      <p className="mt-4">Please try logging in again.</p>
+      <Suspense fallback={<p>Loading error details...</p>}>
+        <ErrorMessage />
+      </Suspense>
     </div>
   );
 }
