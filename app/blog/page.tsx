@@ -57,46 +57,6 @@ export default async function BlogPage() {
           </p>
         </div>
       ) : (
-        // <div className="grid gap-6 md:grid-cols-2">
-        //   {blogs.map((post) => (
-        //     <Link
-        //       key={post._id}
-        //       href={`/blog/${post._id}`}
-        //       // className="block p-4 rounded-lg shadow hover:shadow-md transition"
-        //     >
-        //       <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-        //       {/* {post.images?.[0] && (
-        //         <Image
-        //           src={post.images[0]}
-        //           alt={post.title}
-        //           className="w-full h-48 object-cover rounded mb-2"
-        //           width={500}
-        //           height={300}
-        //         /><Link key={blog._id} href={`/blog/${blog._id}`}>
-        //       )} */}
-
-        //       {post.images?.map((id) => (
-        //         <div
-        //           key={id}
-        //           className="bg-white p-4 overflow-hidden relative aspect-[4/3] w-full sm:w-160 md:w-120 shadow-md"
-        //           data-aos="fade-up"
-        //           data-aos-delay="300"
-        //         >
-        //           <Image
-        //             src={`/api/images/${id}`}
-        //             alt="Blog Image"
-        //             className="w-full h-auto mb-4 rounded-xl  "
-        //             width={500}
-        //             height={300}
-        //           />
-        //         </div>
-        //       ))}
-        //       <p className="text-gray-700 line-clamp-3">
-        //         <ReactMarkdown>{post.content}</ReactMarkdown>
-        //       </p>
-        //     </Link>
-        //   ))}
-        // </div>
         <section
           className="p-8  text-blue-900  dark:bg-gray-800 min-h-[100vh]"
           data-aos="fade-up"

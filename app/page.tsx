@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-    <div className="text-white dark:bg-gray-800">
+    <div className="bg-white dark:bg-gray-800 ">
       {/* Main */}
       <main className="pt-16">
         <HeroSection />
