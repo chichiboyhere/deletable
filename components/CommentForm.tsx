@@ -54,7 +54,7 @@ function CommentForm({ postId }: { postId: string }) {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border p-2 rounded dark:border-gray-700 bg-white dark:bg-gray-800"
+          className="w-full border p-2 rounded dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
           required
         />
         <input
@@ -62,14 +62,14 @@ function CommentForm({ postId }: { postId: string }) {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border p-2 rounded dark:border-gray-700 bg-white dark:bg-gray-800"
+          className="w-full border p-2 rounded dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
           required
         />
         <textarea
           placeholder="Comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="w-full border p-2 rounded h-24 dark:border-gray-700 bg-white dark:bg-gray-800"
+          className="w-full border p-2 rounded h-24 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
           required
         />
         {error && <p className="text-red-600">{error}</p>}

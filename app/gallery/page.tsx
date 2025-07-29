@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import GalleryDefault from "@/components/galleryPageSections/GalleryDefault";
 import GalleryOutSourced from "@/components/galleryPageSections/GalleryOutSourced";
-// import GalleryVideos from "@/components/galleryPageSections/GalleryVideos";
+import GalleryVideos from "@/components/galleryPageSections/GalleryVideos";
 
 export const metadata: Metadata = {
   title: "Dcommando Security - Gallery",
@@ -26,7 +26,7 @@ const Gallery = () => {
     <div className=" px-8 py-12 bg-gray-100 shadow-md dark:bg-gray-800 ">
       <GalleryDefault />
       <GalleryOutSourced />
-      {/* <GalleryVideos /> */}
+      <GalleryVideos />
     </div>
   );
 };
