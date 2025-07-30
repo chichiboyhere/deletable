@@ -106,7 +106,7 @@ const Services = () => {
                   </p>
                   {id === "vendorSourcing" ? (
                     <>
-                      <p>
+                      <p className="text-gray-800 py-5 dark:text-[#ffffffcf]">
                         From{" "}
                         <span className="font-semibold italic">Caterers</span>,
                         to <span className="font-semibold italic">Djs</span>,{" "}
