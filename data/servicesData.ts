@@ -33,7 +33,7 @@ export const services = [
   },
   {
     id: "escort",
-    title: "Escort & Convoy Services",
+    title: "Escort and Convoy Services",
     icon: "escort",
     image: "/images/services/escort.jpg",
     desc: "Secure transport for VIPs, executives, and sensitive cargo. We deploy the services of armed and trained personnel to give you a safety net for your most important assets. Whether it's a VIP, executive, or sensitive cargo, we have the right escort for you!",
@@ -41,7 +41,7 @@ export const services = [
   },
   {
     id: "carRentalAndAirportPickUp",
-    title: "Car Rental & Airport Pick-Up",
+    title: "Car Rental and Airport Pick-Up",
     icon: "escort",
     image: "/images/services/carRental.jpg",
     desc: "Are you looking for a reliable, luxurious car for hire? Or looking for a car for airport pick-up? Do you want to to be chauffeured around in comfort and style, while ensuring your safety? We offer car hire services and airport pick with escort vans. Whether you need a luxury car for a wedding reception, a corporate event, or a private drive, or you want to be chauffeured from the airport to anywhere in the country, look no further than our car rental and airport pick-up services.",

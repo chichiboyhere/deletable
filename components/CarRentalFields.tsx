@@ -38,7 +38,7 @@ const CarRentalFields = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-900">
           Select Car Brand
         </label>
         <select
@@ -46,9 +46,15 @@ const CarRentalFields = () => {
           required
           className="w-full border px-3 py-2 rounded"
         >
-          <option value="">-- Select --</option>
+          <option value="" className="text-black dark:text-[#ffffffcf]">
+            -- Select --
+          </option>
           {carBrands.map(({ brand, price }) => (
-            <option key={brand} value={`${brand} - ${price}`}>
+            <option
+              key={brand}
+              value={`${brand} - ${price}`}
+              className="text-black dark:text-[#ffffffcf]"
+            >
               {brand} ({price})
             </option>
           ))}

@@ -90,9 +90,9 @@ const Services = () => {
                   />
                 </div>
                 <div data-aos="fade-up" data-aos-delay="500">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-5">
                     <div
-                      className={`w-12 h-12 flex items-center justify-center rounded-full ${bg} text-white`}
+                      className={`w-12 h-12   flex items-center justify-center rounded-full ${bg} text-white`}
                     >
                       {Icon && <Icon size={26} color="white" />}
                     </div>
