@@ -57,36 +57,11 @@ body {
     --active-background: rgba(255, 255, 255, 0.03);
   }
 }
-
-/* @layer utilities {
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+@media (max-width: 640px) {
+  .max-w-xs {
+    max-width: 75%; /* Adjust this value as needed */
   }
-
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-  }
-} */
-
-/* @layer utilities {
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-  }
-} */
+}
 
 @layer utilities {
   @keyframes marquee {

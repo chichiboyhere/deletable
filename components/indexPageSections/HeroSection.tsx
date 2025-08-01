@@ -91,13 +91,13 @@ const HeroSection = () => {
         className="absolute left-3 md:left-20 top-1/2 transform -translate-y-1/2 z-50"
         onClick={prevSlide}
       >
-        <ChevronLeft className="w-15 h-15" strokeWidth={1} />
+        <ChevronLeft className="w-15 h-15 text-[#ffffffcf]" strokeWidth={1} />
       </button>
       <button
         className="absolute right-3 md:right-20 top-1/2 transform -translate-y-1/2 z-50"
         onClick={nextSlide}
       >
-        <ChevronRight className="w-15 h-15" strokeWidth={1} />
+        <ChevronRight className="w-15 h-15 text-[#ffffffcf]" strokeWidth={1} />
       </button>
 
       {/* Slide Indicators */}
