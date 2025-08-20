@@ -32,10 +32,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
-      // if (token?.role) {
-      //   session.user.role = token.role;
-      // }
-      // return session;
       const userSession = session as Session;
       if (token?.role) {
         userSession.user.role = token.role as string;
@@ -51,7 +47,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/auth/login",
-    error: "/auth/error", // You can create this if you want
+    error: "/auth/error",
   },
   session: {
     strategy: "jwt",

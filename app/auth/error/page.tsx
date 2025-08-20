@@ -8,7 +8,11 @@ function ErrorMessage() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
 
-  return <p>{error ? `Error: ${error}` : "Something went wrong"}</p>;
+  return (
+    <p className="text-red-500 flex items-center justify-center min-h-[80vh]">
+      {error ? `Error: ${error}` : "Something went wrong"}
+    </p>
+  );
 }
 
 export default function AuthErrorPage() {

@@ -153,9 +153,9 @@ const Services = () => {
               Book {selectedService}
             </h2>
             <form
-              action="https://formspree.io/f/xyzjvjgy"
+              action="https://formspree.io/f/xnnzknqp"
               method="POST"
-              className="space-y-4 mb-4 pt-8"
+              className="space-y-4 mb-4 pt-8 "
             >
               <input type="hidden" name="service" value={selectedService} />
 

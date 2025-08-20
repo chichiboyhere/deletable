@@ -178,7 +178,7 @@ export default function ContactPage() {
               }
             }}
             className="space-y-4"
-            action="https://formspree.io/f/xyzjvjgy"
+            action="https://formspree.io/f/xnnzknqp"
             method="POST"
           >
             <div>

@@ -104,7 +104,7 @@ const Footer = () => {
         {/* Socials */}
         <div className="z-50 flex flex-1 gap-5 md:gap-4 cursor-pointer ">
           <Link
-            href="https://facebook.com/#"
+            href="https://facebook.com/share/1CYBkthx35/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 flex items-center justify-center rounded-full bg-yellow-400 text-blue-900 transition-transform duration-300 hover:scale-110 hover:bg-yellow-500"
