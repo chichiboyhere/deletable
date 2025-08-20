@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const carBrands = [
-  { brand: "Toyota Camry", price: "₦120,000/day" },
+  { brand: "Toyota Camry 2010", price: "₦120,000/day" },
   { brand: "Toyota Avalon 2013", price: "₦180,000/day" },
   { brand: "Lexus RX350 2017", price: "₦220,000/day" },
   { brand: "Lexus LX 2023", price: "₦300,000/day" },

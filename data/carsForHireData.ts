@@ -5,7 +5,7 @@ export const carsForHireData = [
   },
   {
     image: "/images/carGallery/camry_120k.jpg",
-    desc: "Toyota Camry 2015, going for 120,000 per day.",
+    desc: "Toyota Camry 2010, going for 120,000 per day.",
   },
   {
     image: "/images/carGallery/gWagon_1m.jpg",

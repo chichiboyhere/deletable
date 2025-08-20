@@ -16,11 +16,11 @@ const galleryVids = [
   },
 
   {
-    video: "galleryVid6.mp4",
+    video: "galleryVid4.mp4",
     desc: "Dcommando Security recreating 'Coming to America' for the popular Charles Okorocha's wife(aka Mr Phenomenal) at Regency Hall, Ikeja, Lagos.",
   },
   {
-    video: "galleryVid7.mp4",
+    video: "galleryVid5.mp4",
     desc: "We were on ground to cover Charles Okorocha's wedding reception.",
   },
 ];
