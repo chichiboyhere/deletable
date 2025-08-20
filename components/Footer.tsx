@@ -55,7 +55,7 @@ const Footer = () => {
           <h4 className="font-bold mb-2">Contact</h4>
           <p className="text-sm mb-2">Subscribe to our newsletter</p>
           <form
-            action="https://formspree.io/f/xyzjvjgy"
+            action="https://formspree.io/f/xnnzknqp"
             method="POST"
             className="flex items-center mb-4"
           >
@@ -104,7 +104,7 @@ const Footer = () => {
         {/* Socials */}
         <div className="z-50 flex flex-1 gap-5 md:gap-4 cursor-pointer ">
           <Link
-            href="https://facebook.com/share/1CYBkthx35/"
+            href="https://www.facebook.com/share/1CYBkthx35/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 flex items-center justify-center rounded-full bg-yellow-400 text-blue-900 transition-transform duration-300 hover:scale-110 hover:bg-yellow-500"
