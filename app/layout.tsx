@@ -62,7 +62,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={` ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-50`}
       >
         <ThemeProvider
           attribute="class"

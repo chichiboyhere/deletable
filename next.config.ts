@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  // any other options you want
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "blog.dcommandosecurity.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
