@@ -46,7 +46,7 @@ export default function ServicePageClient({ page }: ServicePageProps) {
   };
 
   return (
-    <main className="bg-white dark:bg-gray-900 py-20">
+    <main className="bg-white dark:bg-gray-900  dark:text-[#ffffffcf] py-20">
       <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
         <div>
           <h1 className="text-4xl font-bold text-blue-900 mb-6">{page.h1}</h1>

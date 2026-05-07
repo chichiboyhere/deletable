@@ -130,8 +130,8 @@ export default function ContactPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-              <div className="absolute bottom-2 left-2 bg-white p-2 text-lg shadow">
-                <p>
+              <div className="absolute bottom-2 left-2 bg-white dark:bg-gray-800 p-2 text-lg shadow">
+                <p className="text-gray-900 dark:text-white">
                   14 Faosat Somade Street, Bako Estate, Irawo, Mile 12, Lagos
                   State, Nigeria.
                 </p>
@@ -253,7 +253,7 @@ export default function ContactPage() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute z-10 mt-2 w-full border rounded bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-white p-2 shadow-md max-h-60 overflow-y-auto">
+                <div className="absolute z-10 mt-2 w-full border rounded bg-white text-black dark:bg-gray-800 dark:border-gray-700 dark:text-white p-2 shadow-md max-h-60 overflow-y-auto">
                   <div className="grid grid-cols-2 gap-2">
                     {allServices.map((service) => (
                       <label key={service} className="flex items-center gap-2">
