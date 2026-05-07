@@ -1,3 +1,4 @@
+//data/servicesData.ts
 export const services = [
   {
     id: "bodyguard",

@@ -15,7 +15,7 @@ const Header = () => {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "https://blog.dcommandosecurity.com" },
     { label: "Contact", href: "/contact" },
   ];
 

@@ -1,3 +1,4 @@
+//data/carsForHireData.ts
 export const carsForHireData = [
   {
     image: "/images/carGallery/avalon2013_180k.jpg",

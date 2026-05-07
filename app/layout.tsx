@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RouteSpinner from "@/components/RouteSpinner";
 import ThemeProvider from "@/theme/theme-provider";
-
+import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 
 // import { Inter } from "next/font/google";
@@ -74,6 +74,7 @@ export default function RootLayout({
           <RouteSpinner />
           {children}
           <BackToTop />
+          <WhatsAppButton />
           <Footer />
         </ThemeProvider>
       </body>

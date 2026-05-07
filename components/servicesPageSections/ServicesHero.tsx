@@ -1,3 +1,4 @@
+//compoenents/servicesPageSections/ServicesHero.tsx
 "use client";
 
 import Image from "next/image";
@@ -15,34 +16,14 @@ const HeroSection = () => {
           className="object-cover md:object-top brightness-50"
         />
 
-        <div className="grid md:grid-cols-2 gap-3 md:gap-10 p-4 z-20 items-center justify-center">
+        <div className=" p-4 z-20 items-center justify-center">
           <h2
-            className="text-5xl md:text-6xl font-bold text-white"
+            className="text-5xl md:text-6xl font-bold text-white text-center"
             data-aos="fade-right"
             data-aos-delay="400"
           >
             Our Services
           </h2>
-
-          <div
-            className="rounded-3xl bg-white/60 mt-20"
-            data-aos="fade-left"
-            data-aos-delay="400"
-          >
-            {services.map((service, index) => (
-              <a
-                key={service.id}
-                href={`#${service.id}`}
-                className={`block text-blue-900 text-xl font-semibold text-center p-2 md:p-2.5 transition duration-300 hover:text-blue-600 ${
-                  index === services.length - 1
-                    ? ""
-                    : "border-b border-blue-300"
-                }`}
-              >
-                {service.title}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </section>

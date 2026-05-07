@@ -6,7 +6,7 @@ import AOSInitializer from "@/components/AOSInitializer";
 import Testimonial from "@/components/indexPageSections/Testimonial";
 import ClientMarquee from "@/components/indexPageSections/ClientMarquee";
 import GallerySlideSection from "@/components/indexPageSections/GallerySection";
-
+//import WhatsAppButton from "@/components/WhatsAppButton";
 import BlogSection from "@/components/indexPageSections/BlogSection";
 
 export const metadata: Metadata = {
