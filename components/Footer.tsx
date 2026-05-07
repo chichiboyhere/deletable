@@ -4,8 +4,9 @@ import {
   FaXTwitter,
   FaWhatsapp,
 } from "react-icons/fa6";
-import { services } from "@/data/servicesData";
+
 import Link from "next/link";
+import { servicePages } from "@/data/servicePage";
 
 const Footer = () => {
   return (
@@ -32,7 +33,7 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-2">Services</h4>
           <ul className="space-y-1 text-sm">
-            {services.map((service) => (
+            {servicePages.map((service) => (
               <li key={service.title}>{service.title}</li>
             ))}
           </ul>

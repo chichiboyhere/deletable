@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import servicesHero from "@/public/images/services/servicesHero.jpg";
-import { services } from "@/data/servicesData";
 
 const HeroSection = () => {
   return (

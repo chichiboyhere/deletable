@@ -67,7 +67,7 @@ export default function ContactPage() {
     formData.services.length > 0;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -101,7 +101,7 @@ export default function ContactPage() {
               </div>
               <div className="flex items-center gap-4 ">
                 <Mail className="w-8 h-8" />
-                <span className="font-500">info@dcommandosecurity.com</span>
+                <span className="font-500">contact@dcommandosecurity.com</span>
               </div>
               <div className="flex items-center gap-4 ">
                 <Phone className="w-6 h-6 " />
@@ -158,7 +158,7 @@ export default function ContactPage() {
               if (!isFormComplete) {
                 e.preventDefault();
                 setFeedbackMsg(
-                  "❌ Please complete all fields before submitting."
+                  "❌ Please complete all fields before submitting.",
                 );
                 setSubmitted(false);
               } else {

@@ -26,8 +26,8 @@ const iconMap = {
 type IconKeys = keyof typeof iconMap;
 
 // Service data
-import { services } from "@/data/servicesData";
 
+import { services } from "@/data/servicesData";
 // Main JSX
 export default function ServicesSection() {
   return (

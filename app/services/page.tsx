@@ -2,33 +2,9 @@
 import { Metadata } from "next";
 import HeroSection from "@/components/servicesPageSections/ServicesHero";
 import JsonLd from "@/components/JsonLd";
-import { services } from "@/data/servicesData";
-import Link from "next/link";
+
 import { servicePages } from "@/data/servicePage";
 
-// const servicesData =[
-//   {
-//     id: "bodyguard-services-lagos",
-//     title: "Bodyguard Services Lagos",
-//     href: "/services/bodyguard-services-lagos",
-//   },
-//   {
-//     id: "vip-security-lagos",
-//     title: "VIP security in Lagos",
-//     href: "/services/vip-security-lagos",
-//   },
-//   {
-//     id: "executive-protection-nigeria",
-//     title: "Executive Protection Services in Nigeria",
-//     href: "/services/executive-protection-nigeria",
-//   },
-//   {
-//     id: "executive-protection-nigeria",
-//     title: "Executive Protection Services in Nigeria",
-//     href: "/services/executive-protection-nigeria",
-//   },
-
-// ]
 export const metadata: Metadata = {
   title: "Dcommando Security - Services",
   description: "We are the leading company for security services.",
@@ -46,11 +22,11 @@ export const metadata: Metadata = {
   ],
 };
 export default function ServicesSection() {
-  const servicesJsonLd = services.map((service) => ({
+  const servicesJsonLd = servicePages.map((service) => ({
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
-    description: service.desc,
+    description: service.description,
     provider: {
       "@type": "Organization",
       name: "Dcommando Security",
@@ -64,8 +40,8 @@ export default function ServicesSection() {
       "@type": "Country",
       name: "Nigeria",
     },
-    serviceType: service.icon,
-    url: `https://dcommandosecurity.com/services#${service.id}`,
+    serviceType: service.slug,
+    url: `https://dcommandosecurity.com/services#${service.slug}`,
   }));
 
   return (
@@ -94,7 +70,7 @@ export default function ServicesSection() {
                 key={service.slug}
                 href={`/services/${service.slug}`}
                 className={`block text-blue-900 text-xl font-semibold text-center p-2 md:p-2.5 transition duration-300 hover:text-blue-600 ${
-                  index === services.length - 1
+                  index === servicePages.length - 1
                     ? ""
                     : "border-b border-blue-300"
                 }`}
