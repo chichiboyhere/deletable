@@ -24,8 +24,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/images/brand/dcommando-logo.ico",
+    icon: "/logo.png",
   },
+  title: "Dcommando Security - Home page",
+  description:
+    "Your sure plug for security services in Nigeria. Protect your business from hackers, malware and cyber threats with expert services.",
 };
 
 const orgJsonLd = {
