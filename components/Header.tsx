@@ -17,6 +17,7 @@ const Header = () => {
     { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "https://blog.dcommandosecurity.com" },
     { label: "Contact", href: "/contact" },
+    { label: "Jobs", href: "/jobs" },
   ];
 
   const containerVariants = {

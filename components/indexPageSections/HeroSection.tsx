@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, Sparkles, ArrowRight } from "lucide-react";
 import hero1 from "@/public/images/hero/hero-slide1.jpg";
 import hero2 from "@/public/images/hero/hero-slide2.jpg";
 import hero3 from "@/public/images/hero/hero-slide3.jpg";
+import Link from "next/link";
 
 const slides = [
   {

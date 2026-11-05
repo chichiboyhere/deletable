@@ -6,7 +6,7 @@ import AOSInitializer from "@/components/AOSInitializer";
 import Testimonial from "@/components/indexPageSections/Testimonial";
 import ClientMarquee from "@/components/indexPageSections/ClientMarquee";
 import GallerySlideSection from "@/components/indexPageSections/GallerySection";
-
+import EndOfYearPromo from "@/components/EndOfYearPromo";
 import BlogSection from "@/components/indexPageSections/BlogSection";
 
 export const metadata: Metadata = {
@@ -25,6 +25,7 @@ export default function Home() {
     <div className="bg-white dark:bg-gray-800 ">
       {/* Main */}
       <main className="pt-16">
+        <EndOfYearPromo />
         <HeroSection />
 
         <AOSInitializer />
