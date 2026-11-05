@@ -134,12 +134,10 @@
 //     </>
 //   );
 // }
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import {
-  ShieldCheck,
   Users,
   UserCheck,
   Camera,
@@ -150,21 +148,26 @@ import {
   Tag,
   X,
   CheckCircle,
-  ArrowRight,
-  MapPin,
   Send,
 } from "lucide-react";
 
-// ==========================================
-// 2. END OF YEAR PROMO SERVICES PAGE & FORM
-// ==========================================
-export default function EndOfYearServicesPage() {
-  const [selectedService, setSelectedService] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [submissionStatus, setSubmissionStatus] = useState("idle"); // 'idle' | 'submitting' | 'success' | 'error'
+interface BookingFormState {
+  name: string;
+  personnel_count: string;
+  service_date: string;
+  venue: string;
+  preferred_contact: string;
+  notes: string;
+}
 
-  // Form State
-  const [formData, setFormData] = useState({
+export default function EndOfYearServicesPage() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
+  const [formData, setFormData] = useState<BookingFormState>({
     name: "",
     personnel_count: "1",
     service_date: "",
@@ -178,7 +181,7 @@ export default function EndOfYearServicesPage() {
       id: "event-bouncers-ushers",
       title: "Event Bouncers & Ushers",
       tagline: "Festive Crowd Control & VIP Hospitality",
-      desc: "Professional crowd management, VIP access control, guest ushering, and conflict prevention for holiday galas, concerts, and weddings.",
+      desc: "Professional crowd management, VIP access control, guest ushering, and conflict prevention.",
       icon: Users,
       badge: "Popular for Events",
       discount: "15% Off",
@@ -187,7 +190,7 @@ export default function EndOfYearServicesPage() {
       id: "body-guards",
       title: "Body Guards",
       tagline: "VIP Close Protection Services",
-      desc: "Dedicated tactical and discreet close-protection officers for executives, high-profile guests, and private individuals during holiday trips.",
+      desc: "Dedicated tactical and discreet close-protection officers for executives and VIPs.",
       icon: UserCheck,
       badge: "High Security",
       discount: "20% Off",
@@ -196,7 +199,7 @@ export default function EndOfYearServicesPage() {
       id: "cctv-installation",
       title: "CCTV Camera Installation",
       tagline: "Smart Surveillance & Perimeter Protection",
-      desc: "High-definition night-vision CCTV installation, remote mobile monitoring setup, and security audit for homes, warehouses, and venues.",
+      desc: "High-definition night-vision CCTV installation and remote mobile monitoring setup.",
       icon: Camera,
       badge: "Tech & Hardware",
       discount: "Special Bundle",
@@ -205,7 +208,7 @@ export default function EndOfYearServicesPage() {
       id: "security-guards",
       title: "Security Guards",
       tagline: "Residential & Corporate Patrols",
-      desc: "Unmatched 24/7 static and mobile uniformed guards for estate protection, corporate buildings, industrial grounds, and private residence.",
+      desc: "Unmatched 24/7 static and mobile uniformed guards for estate and corporate protection.",
       icon: Shield,
       badge: "Core Service",
       discount: "Holiday Rate",
@@ -214,7 +217,7 @@ export default function EndOfYearServicesPage() {
       id: "airport-pickup",
       title: "Airport Pickup",
       tagline: "Armed Guard Escort & Arrival Reception",
-      desc: "Safe, punctual, and secure airport reception and armed escort service for visiting VIPs, family members, and executive travelers.",
+      desc: "Safe, punctual, and secure airport reception and armed escort service for visiting VIPs.",
       icon: Plane,
       badge: "Executive",
       discount: "Fast Track",
@@ -223,20 +226,22 @@ export default function EndOfYearServicesPage() {
       id: "car-rentals",
       title: "Car Rentals",
       tagline: "Bulletproof SUVs & Luxury Escort Fleets",
-      desc: "Chauffeur-driven luxury SUVs, armored vehicles, and escort convoy rentals tailored for holiday transportation and secure mobility.",
+      desc: "Chauffeur-driven luxury SUVs, armored vehicles, and escort convoy rentals.",
       icon: Car,
       badge: "Fleet Options",
       discount: "Exclusive Rate",
     },
   ];
 
-  const handleOpenBooking = (serviceTitle) => {
+  const handleOpenBooking = (serviceTitle: string) => {
     setSelectedService(serviceTitle);
     setIsModalOpen(true);
     setSubmissionStatus("idle");
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -244,21 +249,19 @@ export default function EndOfYearServicesPage() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmissionStatus("submitting");
 
-    const form = e.target;
+    const form = e.currentTarget;
     const payload = new FormData(form);
 
-    // Explicitly add selected promo service to Formspree data
     if (selectedService) {
       payload.set("selected_service", selectedService);
     }
 
     try {
-      // NOTE: Replace 'YOUR_FORMSPREE_ID' with your actual Formspree endpoint ID
-      const endpoint = form.action || "https://formspree.io/f/xyzjvjgy";
+      const endpoint = form.action || "https://formspree.io/f/xnnzknqp";
 
       const response = await fetch(endpoint, {
         method: "POST",
@@ -281,18 +284,14 @@ export default function EndOfYearServicesPage() {
       } else {
         setSubmissionStatus("error");
       }
-    } catch (err) {
+    } catch {
       setSubmissionStatus("error");
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 mt-12 sm:mt-12 md:mt-12 lg:mt-10">
-      {/* Include the Marquee Banner at top */}
-
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        {/* Page Header */}
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 py-12 mt-8 sm:mt-8 md:mt-12 lg:mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-300 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-200 dark:border-blue-800">
             <Tag className="w-3.5 h-3.5 text-amber-500" /> dcommandosecurity.com
@@ -308,7 +307,6 @@ export default function EndOfYearServicesPage() {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {promoServices.map((service) => {
             const Icon = service.icon;
@@ -318,20 +316,18 @@ export default function EndOfYearServicesPage() {
                 className="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700/80 p-7 shadow-sm hover:shadow-xl hover:border-blue-600 dark:hover:border-blue-500 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Top Badge & Discount */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
                       {service.badge}
                     </span>
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800 flex items-center gap-1">
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 flex items-center gap-1">
                       <Sparkles className="w-3 h-3 text-amber-500" />{" "}
                       {service.discount}
                     </span>
                   </div>
 
-                  {/* Service Icon & Title */}
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3.5 rounded-2xl bg-blue-900 text-white dark:bg-blue-600 dark:text-white shadow-md shadow-blue-900/10 group-hover:scale-105 transition-transform duration-200">
+                    <div className="p-3.5 rounded-2xl bg-blue-900 text-white dark:bg-blue-600 shadow-md">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -344,130 +340,78 @@ export default function EndOfYearServicesPage() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                     {service.desc}
                   </p>
                 </div>
 
-                {/* Booking Trigger Button */}
                 <button
                   onClick={() => handleOpenBooking(service.title)}
-                  className="w-full py-3.5 px-4 bg-slate-900 hover:bg-blue-900 dark:bg-blue-900 dark:hover:bg-blue-800 text-white font-bold rounded-xl shadow-md transition-colors duration-200 flex items-center justify-center gap-2 group/btn"
+                  className="w-full py-3.5 px-4 rounded-xl bg-blue-900 dark:bg-blue-600 text-white font-bold text-sm hover:bg-blue-950 dark:hover:bg-blue-700 shadow-md transition-all flex items-center justify-center gap-2 group-hover:scale-[1.02]"
                 >
                   <span>Book This Service</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>
             );
           })}
         </div>
-
-        {/* Informational Banner */}
-        <div className="mt-16 bg-blue-900 dark:bg-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="max-w-2xl text-center md:text-left">
-              <span className="text-amber-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center md:justify-start gap-1.5 mb-2">
-                <ShieldCheck className="w-4 h-4" /> Trusted Nationwide
-                Protection
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                Need a Customized Holiday Security Detail?
-              </h2>
-              <p className="mt-2 text-sm text-blue-100 dark:text-slate-300">
-                Planning a large festival, escort travel across state lines, or
-                residential lockdown over Christmas & New Year? Contact
-                DCommando Security directly.
-              </p>
-            </div>
-            <button
-              onClick={() => handleOpenBooking("Custom Security Package")}
-              className="px-6 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105 flex-shrink-0 text-sm"
-            >
-              Request Custom Quote
-            </button>
-          </div>
-        </div>
       </div>
 
-      {/* ==========================================
-          BOOKING MODAL & FORMSPREE INTEGRATION
-         ========================================== */}
+      {/* Booking Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 ">
-          <div
-            className="relative bg-white dark:bg-slate-800 w-full max-w-2xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden transform transition-all mt-100 sm:mt-100 md:mt-100 lg:mt-80"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="bg-blue-900 dark:bg-slate-900 text-white px-6 py-5 flex items-center justify-between border-b border-blue-800 dark:border-slate-800">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-amber-400 text-slate-950 rounded-lg font-bold">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white leading-tight">
-                    Service Booking Request
-                  </h3>
-                  <p className="text-xs text-blue-200 dark:text-slate-400">
-                    Target Service:{" "}
-                    <span className="font-semibold text-amber-300">
-                      {selectedService}
-                    </span>
-                  </p>
-                </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn mt-40 sm:mt-40 md:mt-30 lg:mt-40">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 max-w-xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between sticky top-0 bg-white dark:bg-slate-800 z-10 ">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  Holiday Promo Booking
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-blue-900 dark:text-white">
+                  {selectedService}
+                </h3>
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-blue-200 dark:text-slate-400 hover:text-white p-2 rounded-lg hover:bg-blue-800 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Close modal"
+                className="p-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Form Body */}
             <div className="p-6 sm:p-8">
               {submissionStatus === "success" ? (
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-10 h-10" />
                   </div>
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  <h4 className="text-2xl font-bold text-emerald-950 dark:text-emerald-300">
                     Booking Request Sent!
                   </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-md mx-auto">
-                    Thank you! Our operations officer will reach out to you
-                    shortly via your preferred contact method to confirm pricing
-                    and availability.
+                  <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">
+                    Management has received your booking request for{" "}
+                    <strong>{selectedService}</strong> and will reach out via
+                    your preferred contact channel shortly.
                   </p>
                   <button
                     onClick={() => setIsModalOpen(false)}
-                    className="mt-6 px-6 py-3 bg-blue-900 dark:bg-blue-600 text-white rounded-xl text-sm font-bold hover:opacity-90 transition"
+                    className="mt-6 px-6 py-3 bg-blue-900 text-white font-bold rounded-xl text-sm"
                   >
-                    Done
+                    Close Window
                   </button>
                 </div>
               ) : (
                 <form
-                  action="https://formspree.io/f/xyzjvjgy"
+                  action="https://formspree.io/f/xnnzknqp"
                   method="POST"
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
-                  {/* Hidden field for selected service */}
-                  <input
-                    type="hidden"
-                    name="service_name"
-                    value={selectedService || ""}
-                  />
-
-                  {/* Name field */}
                   <div>
                     <label
                       htmlFor="name"
                       className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                     >
-                      Full Name *
+                      Your Full Name / Organization *
                     </label>
                     <input
                       type="text"
@@ -476,39 +420,36 @@ export default function EndOfYearServicesPage() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="e.g. Chief Adeleke Johnson"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition"
+                      placeholder="Chief Adebayo / Zenith Events"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
                     />
                   </div>
 
-                  {/* Grid for Personnel Count and Date */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="personnel_count"
                         className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                       >
-                        Number of Personnel / Units *
+                        Number of Personnel Required *
                       </label>
                       <input
                         type="number"
                         id="personnel_count"
                         name="personnel_count"
                         min="1"
-                        max="100"
                         required
                         value={formData.personnel_count}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
                       />
                     </div>
-
                     <div>
                       <label
                         htmlFor="service_date"
                         className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                       >
-                        Service / Event Date *
+                        Date Needed *
                       </label>
                       <input
                         type="date"
@@ -517,49 +458,43 @@ export default function EndOfYearServicesPage() {
                         required
                         value={formData.service_date}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
                       />
                     </div>
                   </div>
 
-                  {/* Venue / Location */}
                   <div>
                     <label
                       htmlFor="venue"
                       className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                     >
-                      Venue / Pickup Location *
+                      Venue / Location *
                     </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id="venue"
-                        name="venue"
-                        required
-                        value={formData.venue}
-                        onChange={handleInputChange}
-                        placeholder="e.g. Eko Hotel Convention Centre, Victoria Island, Lagos"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition"
-                      />
-                      <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                    </div>
+                    <input
+                      type="text"
+                      id="venue"
+                      name="venue"
+                      required
+                      value={formData.venue}
+                      onChange={handleInputChange}
+                      placeholder="Eko Hotel, Victoria Island, Lagos"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
+                    />
                   </div>
 
-                  {/* Preferred Contact Method */}
                   <div>
                     <label
                       htmlFor="preferred_contact"
                       className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                     >
-                      How would you like to be contacted? *
+                      Preferred Contact Method *
                     </label>
                     <select
                       id="preferred_contact"
                       name="preferred_contact"
-                      required
                       value={formData.preferred_contact}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
                     >
                       <option value="Phone Call">Phone Call</option>
                       <option value="WhatsApp Message">WhatsApp Message</option>
@@ -567,13 +502,12 @@ export default function EndOfYearServicesPage() {
                     </select>
                   </div>
 
-                  {/* Additional Notes */}
                   <div>
                     <label
                       htmlFor="notes"
                       className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2"
                     >
-                      Special Instructions / Contact Phone or Email
+                      Additional Notes / Contact Number or Email
                     </label>
                     <textarea
                       id="notes"
@@ -581,68 +515,31 @@ export default function EndOfYearServicesPage() {
                       rows={3}
                       value={formData.notes}
                       onChange={handleInputChange}
-                      placeholder="Provide your phone number, email address, or specific security details..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-500 focus:border-transparent outline-none transition resize-y"
+                      placeholder="Include your phone number/email address and any specific security requirements..."
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white text-sm outline-none"
                     ></textarea>
                   </div>
 
-                  {/* Error Notification */}
-                  {submissionStatus === "error" && (
-                    <p className="text-xs font-semibold text-rose-600 dark:text-rose-400 text-center">
-                      Failed to send form. Please check your connection and try
-                      again.
-                    </p>
-                  )}
-
-                  {/* Submit Button */}
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={submissionStatus === "submitting"}
-                      className="w-full py-4 bg-blue-900 hover:bg-blue-950 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
-                    >
-                      {submissionStatus === "submitting" ? (
-                        <span>Submitting Request...</span>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          <span>Submit Booking Request</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={submissionStatus === "submitting"}
+                    className="w-full py-4 bg-blue-900 dark:bg-blue-600 hover:bg-blue-950 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                  >
+                    {submissionStatus === "submitting" ? (
+                      <span>Sending Request...</span>
+                    ) : (
+                      <>
+                        <span>Submit Booking Request</span>
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
                 </form>
               )}
             </div>
           </div>
         </div>
       )}
-
-      {/* Marquee Keyframe Animations (Add to Tailwind or globals.css if needed) */}
-      <style jsx global>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-        @keyframes marquee2 {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-        .animate-marquee2 {
-          animation: marquee2 25s linear infinite;
-        }
-      `}</style>
     </div>
   );
 }
