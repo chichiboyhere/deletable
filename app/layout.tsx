@@ -7,6 +7,7 @@ import RouteSpinner from "@/components/RouteSpinner";
 import ThemeProvider from "@/theme/theme-provider";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
+//import EndOfYearPromo from "@/components/EndOfYearPromo";
 
 // import { Inter } from "next/font/google";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+
           <RouteSpinner />
           {children}
           <BackToTop />

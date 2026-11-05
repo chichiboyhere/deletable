@@ -32,7 +32,7 @@ const EndOfYearPromo = () => {
     <section>
       <Link
         href="/services"
-        className="block bg-blue-900 dark:bg-blue-950 text-white border-b border-blue-800 dark:border-blue-900 hover:bg-blue-950 transition-colors duration-500 overflow-hidden group cursor-pointer"
+        className="block bg-blue-900 dark:bg-blue-950 text-white border-b border-blue-800 dark:border-blue-900 hover:bg-blue-950 transition-colors duration-500 overflow-hidden group cursor-pointer py-1.5 marquee marquee2"
         aria-label="Special End of Year Offer Banner"
       >
         <div className="py-2.5 px-4 max-w-7xl mx-auto flex items-center justify-between">
